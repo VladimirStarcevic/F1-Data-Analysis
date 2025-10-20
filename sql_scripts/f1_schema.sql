@@ -33,3 +33,17 @@ CREATE TABLE winners (
                          race_time VARCHAR(50),
                          laps INT
 );
+
+
+
+SELECT
+    d.name,  -- Koristimo alias 'd' za drivers
+    t.name,  -- Koristimo alias 't' za teams
+    r.name,  -- Koristimo alias 'r' za races
+    r.race_date -- I drugu kolonu iz 'races'
+FROM
+    drivers AS d -- Dajemo nadimak 'd' našoj početnoj tabeli
+
+        JOIN winners AS w ON d.id = w.driver_id
+        JOIN races AS r ON w.race_id = r.id
+        JOIN teams AS t ON w.team_id = t.id;
